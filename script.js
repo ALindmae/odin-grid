@@ -13,3 +13,8 @@ for (let i = 0; i <= 15;  i++) {
     };
     gridContainer.appendChild(gridRow);
 };
+
+
+gridContainer.addEventListener('mouseover', (e) =>  {
+    e.target.classList.add('active');
+});
