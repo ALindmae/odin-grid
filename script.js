@@ -9,7 +9,7 @@ genGridButton.addEventListener('click', () => {
     else if (gridSize < 1) {
         gridSize = Number(prompt("Too small. Define size bigger than 1"));
     }
-    
+
     let squareSize = getSquareSize(gridSize);
     generateGrid(gridSize, squareSize);
 });
@@ -37,10 +37,22 @@ function generateGrid (gridSize, squareSize) {
     };
 
     gridContainer.addEventListener('mouseover', (e) =>  {
-    e.target.classList.add('active');
+    let randomColor = getRandomColor();
+    if (!(e.target.style.backgroundColor)) {
+        e.target.style.backgroundColor = randomColor;
+    }
+
 });  
 }
 
 function getSquareSize (gridSize) {
     return squareSize = (960 / gridSize) > 50 ? 50 : (960 / gridSize);
+}
+
+function getRandomColor () {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let randomColor = `rgb(${r},${g},${b})`
+    return randomColor;
 }
